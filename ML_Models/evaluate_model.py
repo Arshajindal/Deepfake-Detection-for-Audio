@@ -1,9 +1,10 @@
 import torch
 import torchaudio
-from transformers import AutoProcessor, AutoModelForAudioClassification
+from transformers import AutoFeatureExtractor, AutoModelForAudioClassification
 
 # Load processor & model
-processor = AutoProcessor.from_pretrained("MelodyMachine/Deepfake-audio-detection-V2")
+feature_extractor = AutoFeatureExtractor.from_pretrained(
+    "MelodyMachine/Deepfake-audio-detection-V2")
 model = AutoModelForAudioClassification.from_pretrained("MelodyMachine/Deepfake-audio-detection-V2")
 
 def detect_deepfake(audio_file):
@@ -13,7 +14,7 @@ def detect_deepfake(audio_file):
         waveform = torchaudio.transforms.Resample(sr, 16000)(waveform)
 
     # Preprocess
-    inputs = processor(waveform.squeeze().numpy(), sampling_rate=16000, return_tensors="pt")
+    inputs = feature_extractor(waveform.squeeze().numpy(), sampling_rate=16000, return_tensors="pt")
 
     # Inference
     with torch.no_grad():
@@ -26,5 +27,8 @@ def detect_deepfake(audio_file):
     return {labels[i]: float(scores[0][i]) for i in range(len(labels))}
 
 # Example
-result = detect_deepfake("example.wav")
+result = detect_deepfake("data/Dummy Test Dataset/testing/real/file3.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav")
+result2 = detect_deepfake("data/Dummy Test Dataset/testing/fake/file2.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav")
 print(result)
+print(result2)
+
