@@ -334,8 +334,8 @@ if __name__ == "__main__":
     audio_processor = AudioProcessor()
     detector = AIVoiceDetector()
 
-    real_path = Path("C:\\Users\\GOWTHAM\\OneDrive\\Desktop\\Hackathon\\Deepfake-Detection-for-Audio\\data\\Dummy Test Dataset\\testing\\real")
-    fake_path = Path("C:\\Users\\GOWTHAM\\OneDrive\\Desktop\\Hackathon\\Deepfake-Detection-for-Audio\\data\\Dummy Test Dataset\\testing\\fake")
+    real_path = Path("C:\\Users\\GOWTHAM\\OneDrive\\Desktop\\Hackathon\\Deepfake-Detection-for-Audio\\data\\Dummy Test Dataset\\testing\\real_2")
+    fake_path = Path("C:\\Users\\GOWTHAM\\OneDrive\\Desktop\\Hackathon\\Deepfake-Detection-for-Audio\\data\\Dummy Test Dataset\\testing\\fake_2")
 
     real_results = process_folder(real_path, "real", audio_processor, detector)
     fake_results = process_folder(fake_path, "fake", audio_processor, detector)
