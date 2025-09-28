@@ -27,8 +27,8 @@ def detect_deepfake(audio_file):
     return {labels[i]: float(scores[0][i]) for i in range(len(labels))}
 
 # Example
-result = detect_deepfake("data/Dummy Test Dataset/testing/real/file3.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav")
-result2 = detect_deepfake("data/Dummy Test Dataset/testing/fake/file2.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav")
+result = detect_deepfake("data/Dummy Test Dataset/testing/real/file25.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav")
 print(result)
+result2 = detect_deepfake("data/Dummy Test Dataset/testing/fake/file13.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav")
 print(result2)
 
